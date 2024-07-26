@@ -1,0 +1,140 @@
+{% extends "recipes/base.html" %}
+<!-- -->
+{% block content %}
+
+{% load static %}
+
+<section>
+  <div class="row d-none d-lg-flex align-items-center">
+    <div class="col">
+      <h1 class="lh-base">
+        Let's Start <br />
+        Cooking with <br />
+        Popular Recipes
+      </h1>
+
+      <div class="text-secondary my-5 lh-1">
+        <p>Want to learn cook but confused how to start?</p>
+        <p>No need to worry again!</p>
+      </div>
+
+    </div>
+
+    <div class="col position-relative">
+      <img
+        class="landing-image"
+        src="{% static '/images/landing.png' %}"
+        alt="Landing"
+      />
+
+      <div
+        class="card position-absolute d-none d-xl-block"
+        style="width: 15rem; top: 20rem; right: 25rem"
+      >
+        <div class="card-body">
+          <div class="d-flex">
+            <img
+              style="
+                height: 3rem;
+                width: 3rem;
+                margin-right: 1rem;
+                border-radius: 9999px;
+              "
+              src="{% static '/images/pizza.jpg' %}"
+              alt="Image"
+            />
+            <div>
+              <h5 class="card-title">Pizza</h5>
+              <h6
+                class="card-subtitle mb-3 text-secondary"
+                style="font-size: 0.9rem"
+              >
+                Fastfood
+              </h6>
+            </div>
+          </div>
+          <p class="card-text text-secondary" style="font-size: 0.9rem">
+            Flour, Meat, Salt, Dry Yeast, Olive Oil, Pineapple, Pepper
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="card position-absolute d-none d-xl-block"
+        style="width: 15rem; top: 25rem; left: 25rem"
+      >
+        <div class="card-body">
+          <div class="d-flex">
+            <img
+              style="
+                height: 3rem;
+                width: 3rem;
+                margin-right: 1rem;
+                border-radius: 9999px;
+              "
+              src="{% static '/images/burger.jpg' %}"
+              alt="Image"
+            />
+            <div>
+              <h5 class="card-title">Burger</h5>
+              <h6
+                class="card-subtitle mb-3 text-secondary"
+                style="font-size: 0.9rem"
+              >
+                Fastfood
+              </h6>
+            </div>
+          </div>
+          <p class="card-text text-secondary" style="font-size: 0.9rem">
+            Bread, Meat, Salt, Pepper, Cheese, Tomato, Salad
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-block d-lg-none">
+    <div>
+      <h1 class="lh-base">
+        Let's Start <br />
+        Cooking with <br />
+        Popular Recipes
+      </h1>
+
+      <div class="text-secondary my-5 lh-1">
+        <p>Want to learn cook but confused how to start?</p>
+        <p>No need to worry again!</p>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<section class="container" style="margin-top: 8rem; margin-bottom: 8rem;">
+  <h1 class="my-5">Recipes:</h1>
+    <div class="row">
+      {% for recipe in recipes %}
+      <div class="col-sm-6 col-lg-4 mb-5">
+        <a href="{% url 'recipes-detail' recipe.slug %}" class="text-reset text-decoration-none">
+          <div class="card">
+          <img
+            src="{{ recipe.image.url }}"
+            style="height: 300px;"
+            class="card-img-top"
+            alt="Image"
+          />
+          <div class="card-body">
+            <h4 class="card-text mb-4 text-truncate">{{ recipe.title }}</h4>
+            <p class="card-text">Prep: {{ recipe.prep_time }} mins | Cook: {{ recipe.cook_time }} mins</p>
+              <p class="card-text mb-2">
+              {{ recipe.updated_at|date:"F d, Y" }}
+            </p>
+          </div>
+        </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+</section>
+{% endblock content %}

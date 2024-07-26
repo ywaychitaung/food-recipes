@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Food Recipes</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  </head>
+  <body class="mt-4">
+    <!-- HEADER -->
+    <header
+      class="d-flex align-items-center justify-content-between nav-margin"
+    >
+      <div class="d-flex align-items-end">
+        <a href="/" class="text-decoration-none">
+          <h1 id="logo"></h1>
+        </a>
+        <nav class="mx-5 d-none d-md-block">
+          <ul class="d-flex gap-5 list-unstyled">
+            <li>
+              <a href="/" class="text-decoration-none pe-auto">Home</a>
+            </li>
+            <li>
+              <a href="/about" class="text-decoration-none pe-auto">About</a>
+            </li>
+            <li>
+              <a href="/news" class="text-decoration-none pe-auto">News</a>
+            </li>
+            <li>
+              <a href="/videos" class="text-decoration-none pe-auto">Videos</a>
+            </li>
+            <!-- {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'recipes-create' %}" class="text-decoration-none pe-auto">Add Recipe</a>
+            </li>
+            {% endif %} -->
+          </ul>
+        </nav>
+      </div>
+
+      <!-- {% if user.is_authenticated %}
+          <a href="{% url 'user-logout' %}" class="d-none d-md-block">
+            <button class="btn btn-outline-success">Logout</button>
+          </a>
+          {% else %}
+          <a href="{% url 'user-login' %}" class="d-none d-md-block">
+            <button class="btn btn-outline-success">Login</button>
+          </a>
+      {% endif %} -->
+
+      <div class="dropdown d-block d-md-none">
+        <button class="btn btn-secondary text-black bg-white" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          
+          <li><a href="/" class="dropdown-item">Home</a></li>
+          <li><a href="/about" class="dropdown-item">About</a></li>
+          <li><a href="/news" class="dropdown-item">News</a></li>
+          <li><a href="/videos" class="dropdown-item">Videos</a></li>
+             <!-- {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'recipes-create' %}" class="dropdown-item">Add Recipe</a>
+            </li>
+            {% endif %}
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'user-logout' %}" class="dropdown-item">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'user-login' %}" class="dropdown-item">Login</a></li>
+                  {% endif %} -->
+        </ul>
+      </div>
+    </header>
+    <!-- END OF HEADER -->
+
+    <div class="main">
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% block content %} {% endblock %}
+    </div>
+
+    <!-- FOOTER -->
+    <footer
+      id="footer"
+    >
+      Copyright &copy; 2023
+    </footer>
+    <!-- END OF FOOTER -->
+
+    <script src="{% static '/js/main.js' %}" type="text/javascript"></script>
+  </body>
+</html>
