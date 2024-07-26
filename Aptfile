@@ -3,7 +3,7 @@ libjpeg-dev
 libjpeg8-dev
 libfreetype6-dev
 liblcms2-dev
-libopenjpeg-dev
+libopenjp2-7-dev
 libwebp-dev
 tcl8.6-dev
 tk8.6-dev
