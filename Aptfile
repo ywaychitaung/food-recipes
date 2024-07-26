@@ -2,3 +2,9 @@ zlib1g-dev
 libjpeg-dev
 libjpeg8-dev
 libfreetype6-dev
+liblcms2-dev
+libopenjpeg-dev
+libwebp-dev
+tcl8.6-dev
+tk8.6-dev
+python3-tk
